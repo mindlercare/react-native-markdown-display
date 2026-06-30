@@ -1,6 +1,5 @@
 // tslint:disable:max-classes-per-file
 import MarkdownIt from 'markdown-it';
-import Token from 'markdown-it/lib/token';
 import {ComponentType, ReactNode} from 'react';
 import {StyleSheet, View} from 'react-native';
 
@@ -46,7 +45,7 @@ export interface RenderRules {
 export const renderRules: RenderRules;
 
 export interface MarkdownParser {
-  parse: (value: string, options: any) => Token[];
+  parse: (value: string, options: any) => MarkdownIt.Token[];
 }
 
 export interface ASTNode {
@@ -77,9 +76,9 @@ export function parser(
 export function stringToTokens(
   source: string,
   markdownIt: MarkdownParser,
-): Token[];
+): MarkdownIt.Token[];
 
-export function tokensToAST(tokens: ReadonlyArray<Token>): ASTNode[];
+export function tokensToAST(tokens: ReadonlyArray<MarkdownIt.Token>): ASTNode[];
 
 export interface MarkdownProps {
   children?: ReactNode;
